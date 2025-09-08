@@ -1,7 +1,7 @@
 variable "instance_name" {
   description = "Value of the EC2 instance's Name tag."
   type        = string
-  default     = "austin-learn-terraform"
+  default     = "austin-new"
 }
 
 variable "instance_type" {
