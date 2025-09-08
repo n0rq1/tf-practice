@@ -4,6 +4,12 @@ variable "instance_name" {
   default     = "austin-newest-test"
 }
 
+variable "bucket_name" {
+  description = "Name of the website S3 bucket. Overrides the local module default."
+  type        = string
+  default     = "<bucket-override-name>"
+}
+
 variable "instance_type" {
   description = "The EC2 instance's type."
   type        = string
