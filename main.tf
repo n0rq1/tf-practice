@@ -47,5 +47,5 @@ module "ec2_instance" {
 
 module "website_s3_bucket" {
   source      = "./modules/s3-bucket"
-  bucket_name = "austin-tfpractice"
+  bucket_name = "website-tfpractice"
 }

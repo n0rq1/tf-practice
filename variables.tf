@@ -7,7 +7,7 @@ variable "instance_name" {
 variable "bucket_name" {
   description = "Name of the website S3 bucket. Overrides the local module default."
   type        = string
-  default     = "<bucket-override-name>"
+  default     = "website-tfpractice"
 }
 
 variable "instance_type" {
@@ -19,7 +19,7 @@ variable "instance_type" {
 variable "vpc_name" {
   description = "Name of VPC"
   type        = string
-  default     = "<your-vpc-name>"
+  default     = "website-vpc"
 }
 
 variable "vpc_cidr" {
