@@ -1,11 +1,8 @@
 terraform {
-  cloud {
-    organization = "new_goblins"
-
-    workspaces {
-      project = "Austin Learn Terraform"
-      name = "learn-terraform-aws-austin-pt2"
-    }
+  backend "s3" {
+    bucket = "austin-tfpractice"
+    key    = "practice/prod/terraform.tfstate"
+    region = "us-west-2"
   }
 
   required_providers {
