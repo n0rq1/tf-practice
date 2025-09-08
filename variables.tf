@@ -1,7 +1,7 @@
 variable "instance_name" {
   description = "Value of the EC2 instance's Name tag."
   type        = string
-  default     = "austin-new"
+  default     = "austin-newest-test"
 }
 
 variable "instance_type" {
