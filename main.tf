@@ -17,17 +17,23 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.19.0"
 
-  name = "demo-vpc"
-  cidr = "10.0.0.0/16"
+  name = var.vpc_name
+  cidr = var.vpc_cidr
 
-  azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets  = ["10.0.101.0/24"]
+  azs             = var.vpc_azs
+  private_subnets = var.vpc_private_subnets
+  public_subnets  = var.vpc_public_subnets
 
   enable_dns_hostnames = true
 }
 
-resource "aws_instance" "new_server" {
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "5.6.1"
+
+  count = 1
+  name  = "my-ec2-cluster-${count.index}"
+
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
@@ -37,4 +43,9 @@ resource "aws_instance" "new_server" {
   tags = {
     Name = var.instance_name
   }
+}
+
+module "website_s3_bucket" {
+  source      = "./modules/s3-bucket"
+  bucket_name = "austin-tfpractice"
 }
